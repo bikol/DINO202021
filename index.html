@@ -10,6 +10,13 @@
 
 	<body>
     
+	<h2>git branch -v</h2>
+             <ul>
+                 <li>Komenda listuje wszystkie dostępne gałęzie w danym repozytorium.</li>
+		 <li>-v - wyświetla dodatkowe informacje na temat ostatnich commitów wykonanych na poszczególnych gałęziach.</li>
+                 <li>Komenda ta jest bardzo przydatna w przypadku gdy osoba posiada wiele gałęzi nad którymi pracuje i chce odnaleźć tę która go aktualnie interesuje.</li>
+             </ul></br>
+
     	<h2> git reset HEAD </h2>
 			<ul>
 				<li> cofa zmiany, wracając do plików wyjściowych </br> 
@@ -33,7 +40,7 @@
 			</p>
 		</ul></br>
 
-		
+
 	<h2>git blame -C "filename"</h2>
 		<ul>	
 			<p>
@@ -70,6 +77,33 @@ a0ddc9f8 (Patryk Żywica 2020-11-10 19:37:44 +0100 3) &lt;/html&gt;</code></pre>
 				<li>auto - ustawiona jest domyślnie, koloruje jedynie dane wyjściowe trafiające prosto do terminalu</br>
 				<li>true - włącza pełne koloryzowanie danych wyjściowych trafiających zarówno do terminala jak i np pliku</br>
 				<li>false - wyłącza opcję koloryzowania danych wyjściowych</br>
+			</p>
+		</ul>
+
+<h2>git diff --staged</h2>
+  <ul>
+		<p>
+			<li> git diff - komenda pokazuje różnice między katalogiem w którym aktualnie się znajdujemy a listą plików które mają zostać scommitowane</br>
+
+      <li> opcja --staged działa tak samo jak opcja --cached, dzięki niej komenda git diff pokazuje różnice między plikami które mają zostać scommitowane a tymi, które znajdują się w Head</br>
+		</p>
+  </ul>
+		
+	<h2>git fetch "remote" "branch"</h2>
+		<ul>
+			<p>Polecenie pobiera dane, które znajdują się w zdalnym repozytorium do lokalnego repozytorium. 
+			   Ściąga wszystkie nowe zmiany pojawiające się w oryginalnym repozytorium od momentu jego sklonowania lub ostatniego użycia polecenia fetch. 
+			   Fetch pobiera dane, ale nie scala ani nie modyfikuje ich z lokalnymi plikami roboczymi. Wszelkie zmiany można scalać ręcznie w wybranym czasie.
+			</p>
+		</ul>
+	<h2> git config --global user.email "" </h2>
+		<ul>
+			<p>
+				Komenda służąca do konfiguracji użytkwnika która ustawia globalnie nasz adres e-mail.</br>
+				Jest to ważne ponieważ każdy utworzony przez nas commit będzie używać tej inforacji.</br>
+				Wystarczy jednorazowa konfiguracja gdyż opcja --global zapisuje nasz ustawienie dla każdego projektu.</br>
+				Jeśli jednak istnieje potrzeba ustawienia opcji dla danego projektu można użyć komendy bez --global</br>
+				wtedy ustawnie zostanie zapisane tylko dla konkretnego projektu.</br>
 			</p>
 		</ul>
 		
