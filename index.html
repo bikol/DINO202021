@@ -106,6 +106,39 @@ a0ddc9f8 (Patryk Żywica 2020-11-10 19:37:44 +0100 3) &lt;/html&gt;</code></pre>
 		</p>
   </ul>
 		
+	<h2>git fetch "remote" "branch"</h2>
+		<ul>
+			<p>Polecenie pobiera dane, które znajdują się w zdalnym repozytorium do lokalnego repozytorium. 
+			   Ściąga wszystkie nowe zmiany pojawiające się w oryginalnym repozytorium od momentu jego sklonowania lub ostatniego użycia polecenia fetch. 
+			   Fetch pobiera dane, ale nie scala ani nie modyfikuje ich z lokalnymi plikami roboczymi. Wszelkie zmiany można scalać ręcznie w wybranym czasie.
+			</p>
+		</ul>
+	<h2> git config --global user.email "" </h2>
+		<ul>
+			<p>
+				Komenda służąca do konfiguracji użytkwnika która ustawia globalnie nasz adres e-mail.</br>
+				Jest to ważne ponieważ każdy utworzony przez nas commit będzie używać tej inforacji.</br>
+				Wystarczy jednorazowa konfiguracja gdyż opcja --global zapisuje nasz ustawienie dla każdego projektu.</br>
+				Jeśli jednak istnieje potrzeba ustawienia opcji dla danego projektu można użyć komendy bez --global</br>
+				wtedy ustawnie zostanie zapisane tylko dla konkretnego projektu.</br>
+			</p>
+		</ul>
+		
+	<h2>git bisect (start, bad, good, reset)</h2>
+		<ul>
+			<p>
+				W założeniach komenda służy do wyszukania w historii (za pomocą algorytmu wyszukiwania binarnego), który commit wprowadził błąd. 
+				Można ją jednak również wykorzystać do wyszukania commitu, który zmienił wybraną właściwość projektu. 
+				Do skutecznego działania wymaga zdefiniowania co najmniej jednej wersji projektu jako złej i jednej jako dobrej. 
+				Następnie algorytm wybiera wersję pomiędzy dwoma zdefiniowanymi wersjami i prosi użytkownika o ocenę, czy jest to wersja dobra, czy zła. 
+				Powtarza się to, dopóki nie zostanie odnaleziony commit zły następujący bezpośrednio po commitcie ocenionym jako dobry. </br>
+ 				Podstawowe polecenia bisect:</br>
+				<li>git bisect start - rozpoczyna sesję bisect</br>
+				<li>git bisect bad - określa aktualną/sprawdzaną wersję jako złą</br>
+				<li>git bisect good <wersja> - określa zadaną wersję jako dobrą, a później - bez podawania wersji - określa sprawdzaną wersję jako dobrą</br>
+				<li>git bisect reset <commit> - domyślnie, bez podania parametru <commit>, czyści sesję bisect, wracając do stanu wyjściowego; użycie parametru <commit> pozwala zamiast tego wrócić do wybranego commita.</br>
+			</p>
+		</ul>
 
 </body>
 </html>
