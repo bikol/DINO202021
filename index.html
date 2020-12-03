@@ -9,32 +9,47 @@
 </head>
 
 <body>
-    <h2> git reset HEAD </h2>
+    <h2> git branch -v </h2>
     <p>
-        <li> cofa zmiany, wracając do plików wyjściowych, </li>
-        <li> można regulować ile zrobionych przez nas commitów ma być cofniętych np <code> git reset HEAD^ </code>, cofnie nam o jeden, natomiast <code> git reset HEAD~2 </code> o dwa, </li>
-        <li> gdy po modyfikowaniu, usuwaniu i dodawaniu wierszy w plikach, okazuje się, że zmiany nie są dobre i chcemy wrócić do wyjściowego pliku <code> git reset HEAD index.html </code> </li>
+        Komenda listuje wszystkie dostępne gałęzie w danym repozytorium. Jest bardzo przydatna w przypadku, gdy osoba posiada wiele gałęzi nad którymi pracuje i chce odnaleźć tę, która go aktualnie interesuje.
+        <ul>
+            <li> v - wyświetla dodatkowe informacje na temat ostatnich commitów wykonanych na poszczególnych gałęziach, </li>
+        </ul>
     </p>
 
+    <h2> git reset HEAD </h2>
+    <p>
+        <ul>
+            <li> cofa zmiany, wracając do plików wyjściowych, </li>
+            <li> można regulować ile zrobionych przez nas commitów ma być cofniętych np <code> git reset HEAD^ </code>, cofnie nam o jeden, natomiast <code> git reset HEAD~2 </code> o dwa, </li>
+            <li> gdy po modyfikowaniu, usuwaniu i dodawaniu wierszy w plikach, okazuje się, że zmiany nie są dobre i chcemy wrócić do wyjściowego pliku <code> git reset HEAD index.html </code>, </li>
+        </ul>
+    </p>
 
-    <h2>git remote add "remote_name" "git url"</h2>
+    <h2> git remote add "remote_name" "git url"</h2>
     <p>
         Komenda służąca do dodania nowego zdalnego repozytorium, która przyjmuje dwa argumenty: "remote_name", czyli nazwę zdalnego repozytorium oraz url do niego "git url". <br>
         Przykład: <code> git remote add "nazwa" "https://github.com/user/repo.git" </code>
     </p>
 
-    <h2>git commit -a -m ""</h2>
+    <h2> git commit -a -m ""</h2>
     <p>
-        Zatwierdza zmodyfikowane i usunięte pliki w danym repozytorium. <br>
+        Zatwierdza zmodyfikowane i usunięte pliki w danym repozytorium.
         <ul>
-            <li>a - (all - wszystkie) - parametr, dzięki któremu zatwierdzone zostaną wszystkie zmiany, </li>
-            <li>m - (message - wiadomość) - parametr, którty oznacza dodanie do "commita" krótkiej wiadomości, </li>
-            <li>"" - miejsce na krótką wiadomość, </br>
+            <li> a - (all - wszystkie) - parametr, dzięki któremu zatwierdzone zostaną wszystkie zmiany, </li>
+            <li> m - (message - wiadomość) - parametr, którty oznacza dodanie do "commita" krótkiej wiadomości, </li>
+            <li> "" - miejsce na krótką wiadomość, </li>
         </ul>
     </p>
 
+    <h2> git checkout "branch" </h2>
+    <p>
+        Komenda git checkout pozwala zmienić gałąź na której pracujemy. <br>
+        Wywołanie komendy <code> git checkout "branch" </code> przełączy nas na gałąź o nazwie "branch" i zaktualizuje pliki w katalogu roboczym na te z wybranej gałęzi. <br>
+        Jeśli gałąź o nazwie "branch" nie istnieje, komenda nie zadziała. Aby stworzyć nową gałąź o tej nazwie należy poprzedzić nazwę gałęzi flagą <code> -b (git checkout -b "branch") </code>.</br>
+    </p>
 
-    <h2>git blame -C "filename"</h2>
+    <h2> git blame -C "filename"</h2>
     <p>
         <p>
             Komenda poprzedza każdą linię w pliku "filename" informacją o miejscu, autorze oraz czasie ostatniej modyfikacji danej linii. Nie podaje jednak informacji na temat usuniętych oraz zastąpionych linii. <br>
@@ -46,16 +61,16 @@
         </p>
     </p>
 
-    <h2>git branch "name"</h2>
+    <h2> git branch "name" </h2>
     <p>
         Komenda git branch za argument przyjmuje ciąg znaków i tworzy nowy branch o podanej nazwie "name". Może być przydatna np. gdy podczas prac nad działającą aplikacją nie chcemy jej zepsuć, co umożliwia nam stworzenie nowego brancha dedykowanego wprowadzanym zmianom.
     </p>
 
-    <h2>git config --global user.name ""</h2>
+    <h2> git config --global user.name "" </h2>
     <p>
         Komenda służy do wykonania pierwszych konfiguracji gita. Wystarczy dokonać tej konfiguracji tylko raz (informacje zostaną zachowane nawet po aktualizacji). Za pomocą parametrów, które są wykorzystywane powyżej następuje przypisanie wszystkich tworzonych zmian do konkretnego użytkownika.
         <ul>
-            <li> Paramter <code>--global</code> jest opcjonalny, jednak to on odpowiada za to, że dane pozostają nienaruszone po zmianach w aplikacji (np. po aktualizacji) </li>
+            <li> Paramter <code>--global</code> jest opcjonalny, jednak to on odpowiada za to, że dane pozostają nienaruszone po zmianach w aplikacji (np. po aktualizacji). </li>
             <li> Parametr <code>user.name</code> mówi o tym, co zamierzamy skonfigurować - w tym przypadku jest to nazwa użytkownika. </li>
             <li> <code>""</code> w cudysłowie należy podać wartość, która jest nazwą użytkownika, z którą chcemy być identyfikowani w dalszej części pracy nad projektem. </li>
         </ul>
@@ -66,15 +81,24 @@
         Jest głównym przełącznikiem pozwalającym konfigurować koloryzowanie danych wyjścia. <br>
         Opcja: <br>
         <ul>
-            <li> auto - ustawiona jest domyślnie, koloruje jedynie dane wyjściowe trafiające prosto do terminalu </li>
-            <li> true - włącza pełne koloryzowanie danych wyjściowych trafiających zarówno do terminala jak i np. pliku </li>
-            <li> false - wyłącza opcję koloryzowania danych wyjściowych </li>
+            <li> auto - ustawiona jest domyślnie, koloruje jedynie dane wyjściowe trafiające prosto do terminalu, </li>
+            <li> true - włącza pełne koloryzowanie danych wyjściowych trafiających zarówno do terminala jak i np. pliku, </li>
+            <li> false - wyłącza opcję koloryzowania danych wyjściowych, </li>
+        </ul>
+    </p>
+
+    <h2> git diff --staged </h2>
+    <p>
+        Komenda pokazuje różnice między katalogiem, w którym aktualnie się znajdujemy a listą plików, które mają zostać scommitowane.
+        <ul>
+            <li> opcja <code> --staged </code> działa tak samo jak opcja <code> --cached </code> - dzięki niej komenda <code> git diff </code> pokazuje różnice między plikami, które mają zostać scommitowane a tymi, które znajdują się w Head, </li>
         </ul>
     </p>
 
     <h2> git log --graph --all </h2>
     <p>
-        Komenda git log wywołana bez argumentów listuje zmiany zatwierdzone w repozytorium w odwrotnej kolejności chronologicznej. <br>
+        Komenda git log wywołana bez argumentów listuje zmiany zatwierdzone w repozytorium w odwrotnej kolejności
+        chronologicznej. <br>
         Opcje: <br>
         <ul>
             <li> --graph - wyświetla graf, obrazujący gałęzie repozytorium i ich połączenia, wraz z informacjami o commitach, </li>
