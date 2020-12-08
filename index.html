@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE HTML>
 <html lang="pl">
 
@@ -10,7 +12,24 @@
 
 	<body>
     
+
+
+    	<h2> git branch -d "branch" </h2>
+		<p> Komenda branch operuje na gałęziach, może je przykładowo tworzyć lub listować. Parametr -d usuwa daną gałąź "branch", przy czym 
+    można podać ich więcej niż jedną. Jeśli jakaś gałąź posiada reflog, to również zostanie on usunięty. 
+    Gałąź musi być w pełni zmergowana (scalona) z gałęzią powyżej (upstream) albo HEAD. /p>
+    
+
+	<h2>git branch -v</h2>
+             <ul>
+                 <li>Komenda listuje wszystkie dostępne gałęzie w danym repozytorium.</li>
+		 <li>-v - wyświetla dodatkowe informacje na temat ostatnich commitów wykonanych na poszczególnych gałęziach.</li>
+                 <li>Komenda ta jest bardzo przydatna w przypadku gdy osoba posiada wiele gałęzi nad którymi pracuje i chce odnaleźć tę która go aktualnie interesuje.</li>
+             </ul></br>
+
+
     	<h2> git reset HEAD </h2>
+
 			<ul>
 				<li> cofa zmiany, wracając do plików wyjściowych </br> 
 		można regulować ile zrobionych przez nas commitów ma być cofniętych np <code> git reset HEAD^ </code>, cofnie nam o jeden, natomiast <code> git reset HEAD~2 </code> o dwa </li>
@@ -33,10 +52,27 @@
 			</p>
 		</ul></br>
 
-		
-	<h2>git blame -C "filename"</h2>
-		<ul>	
-			<p>
+
+
+
+    <h2>git commit -a -m ""</h2>
+		<p>
+			git commit - zatwierdza zmodyfikowane i usunięte pliki w danym repozytorium.</br>
+			-a (all - wszystkie) - parametr, dzięki któremu zatwierdzone zostaną wszystkie zmiany. </br>
+		   	-m (message - wiadomość) - parametr, którty oznacza dodanie do "commita" krótkiej wiadomości.</br>
+			"" - miejsce na krótką wiadomość.</br>
+		</p>
+
+    <h2>git checkout "branch"</h2>
+		<p>
+			Komenda git checkout pozwala zmienić gałąź na której pracujemy.</br>
+			Wywołanie komendy git checkout "branch" przełączy nas na gałąź o nazwie "branch" i zaktualizuje pliki w katalogu roboczym na te z wybranej gałęzi.</br>
+			Jeśli gałąź o nazwie "branch" nie istnieje, komenda nie zadziała. Aby stworzyć nową gałąź o tej nazwie należy poprzedzić nazwę gałęzi flagą -b (git checkout -b "branch").</br>
+		</p>
+
+		<dl>
+			<dt>git blame -C "filename"</dt>
+			<dd>
 				Komenda poprzedza każdą linię w pliku "filename" informacją o miejscu, autorze oraz czasie ostatniej modyfikacji danej linii.
 				Nie podaje jednak informacji na temat usuniętych oraz zastąpionych linii. 
 				Dzięki opcji <code>-C</code> wykrywa linie skopiowane z innych plików w repozytorium.
@@ -75,7 +111,52 @@ a0ddc9f8 (Patryk Żywica 2020-11-10 19:37:44 +0100 3) &lt;/html&gt;</code></pre>
 
 <h2>git branch -v</h2>
 		<p>Komenda pozwala nam pokazać wszystkie gałęzie istniejące w repozytorium, w którym znajdujemy się w daniej chwili. <br>Dzięki opcji "-v" możemy zobaczyć także ostatni dokonany commit.</p>
+
+
+<h2>git diff --staged</h2>
+  <ul>
+		<p>
+			<li> git diff - komenda pokazuje różnice między katalogiem w którym aktualnie się znajdujemy a listą plików które mają zostać scommitowane</br>
+
+      <li> opcja --staged działa tak samo jak opcja --cached, dzięki niej komenda git diff pokazuje różnice między plikami które mają zostać scommitowane a tymi, które znajdują się w Head</br>
+		</p>
+  </ul>
 		
+	<h2>git fetch "remote" "branch"</h2>
+		<ul>
+			<p>Polecenie pobiera dane, które znajdują się w zdalnym repozytorium do lokalnego repozytorium. 
+			   Ściąga wszystkie nowe zmiany pojawiające się w oryginalnym repozytorium od momentu jego sklonowania lub ostatniego użycia polecenia fetch. 
+			   Fetch pobiera dane, ale nie scala ani nie modyfikuje ich z lokalnymi plikami roboczymi. Wszelkie zmiany można scalać ręcznie w wybranym czasie.
+			</p>
+		</ul>
+	<h2> git config --global user.email "" </h2>
+		<ul>
+			<p>
+				Komenda służąca do konfiguracji użytkwnika która ustawia globalnie nasz adres e-mail.</br>
+				Jest to ważne ponieważ każdy utworzony przez nas commit będzie używać tej inforacji.</br>
+				Wystarczy jednorazowa konfiguracja gdyż opcja --global zapisuje nasz ustawienie dla każdego projektu.</br>
+				Jeśli jednak istnieje potrzeba ustawienia opcji dla danego projektu można użyć komendy bez --global</br>
+				wtedy ustawnie zostanie zapisane tylko dla konkretnego projektu.</br>
+			</p>
+		</ul>
+		
+	<h2>git bisect (start, bad, good, reset)</h2>
+		<ul>
+			<p>
+				W założeniach komenda służy do wyszukania w historii (za pomocą algorytmu wyszukiwania binarnego), który commit wprowadził błąd. 
+				Można ją jednak również wykorzystać do wyszukania commitu, który zmienił wybraną właściwość projektu. 
+				Do skutecznego działania wymaga zdefiniowania co najmniej jednej wersji projektu jako złej i jednej jako dobrej. 
+				Następnie algorytm wybiera wersję pomiędzy dwoma zdefiniowanymi wersjami i prosi użytkownika o ocenę, czy jest to wersja dobra, czy zła. 
+				Powtarza się to, dopóki nie zostanie odnaleziony commit zły następujący bezpośrednio po commitcie ocenionym jako dobry. </br>
+ 				Podstawowe polecenia bisect:</br>
+				<li>git bisect start - rozpoczyna sesję bisect</br>
+				<li>git bisect bad - określa aktualną/sprawdzaną wersję jako złą</br>
+				<li>git bisect good <wersja> - określa zadaną wersję jako dobrą, a później - bez podawania wersji - określa sprawdzaną wersję jako dobrą</br>
+				<li>git bisect reset <commit> - domyślnie, bez podania parametru <commit>, czyści sesję bisect, wracając do stanu wyjściowego; użycie parametru <commit> pozwala zamiast tego wrócić do wybranego commita.</br>
+			</p>
+		</ul>
 
 </body>
+
 </html>
+
