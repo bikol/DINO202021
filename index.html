@@ -1,26 +1,164 @@
-<html>
-	<body>git config --global user.name "" - pozwala na nadanie nazwy użytkownika która jest używana przy każdym commicie z danego konta <br>
-	git reset HEAD - cofa commit w lokalnym repozytorium <br>
-	gitk -all z angielskiego ,,przeglądarka repozytoriów gita", dodatek -all pokazuje wszystkie branche, tagi, itd <br>
-	git branch --merged z podanym argumentem filtruje i pokazuje liste do branchowania które już zostały zmergowane. <br>
-	git branch "branch" "commit hash" - tworzy nowy branch o nazwie commit hash <br>
-	git pull "remote" "branch" pobiera zmiany z repozytorium remote z gałezi branch <br>
-	git config --global user.email "" - tak jak pierwsza komenda ale ta pozwala na nadanie emaila <br>
-	git diff --staged pozwala wyświetlić zmiany wprowdadzone dla następnego commitu względem nazwy <br>
-	gir checkout -b "branch" tworzy nowy branch o nazwie ,,branch" <br>
-	git log --graph --all - pokazuje logi komitów w graficznej reprezentacji <br>
-	git branch -d "branch" - usuwa branch o nazwie ,,branch" <br>
-	git fetch "remote" "branch" pobiera dane z remote na branch <br>
-	git config --global color.ui true - koloruje konsole i nasz ,,output" <br>
-	git commit "filename" - wprowadza zmiany do repozytorium pod określoną nazwą <br>
-	git branch -v - gdy jesteśmy w trybie listy pokauzje sha1 i pozwala na zatwierdzenie tematów <br>
-	git push "remote" "branch" - aktualizuje nasze repozytorium zmianami ktore wprowadzilismy <br>
-	git log "branch" --not"branch" - sprawdza logi commitow odrwacajac prefixy <br>
-	git biscet (start, bad, good, reset) - pozwala na wyszukiwanie commita wprowadzajacego buga <br>
-	git commit -a -m "" - pozwala na automatyczne ulozenie plikow ktore zostaly zamienione przy tym, zostawiajac wiadomosc przy commicie <br>
-	git add . - pozwala na sledzenie plikow ktore chcemy dodac i musimy zatwierdzic <br>
-	git-checkout - zmienia galezie lub odzyskuje pracujace pliki z drzew <br>
-	git remote add "remote_name" "git url" - nadaje nazwe dowolnemu repozytorium do ktorego podajemy link <br>
-	git blame -C "filename" - sprawdza zmiany wprowadzone do pliku, jednak dzieki -C nie ogranicza sie ta funkcja do jednego, a do wielu gdzie podczas danego commitu doszlo do zmian<br>
-	git branch "filename" tworzy lub usuwa galaz
-	</body> </html>
+
+
+<!DOCTYPE HTML>
+<html lang="pl">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Komendy Git</title>
+        <meta name="description" content="Spis komend Git'a wraz z ich opisami uzycia." />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    </head>
+
+	<body>
+    
+
+
+    	<h2> git branch -d "branch" </h2>
+		<p> Komenda branch operuje na gałęziach, może je przykładowo tworzyć lub listować. Parametr -d usuwa daną gałąź "branch", przy czym 
+    można podać ich więcej niż jedną. Jeśli jakaś gałąź posiada reflog, to również zostanie on usunięty. 
+    Gałąź musi być w pełni zmergowana (scalona) z gałęzią powyżej (upstream) albo HEAD. /p>
+    
+
+	<h2>git branch -v</h2>
+             <ul>
+                 <li>Komenda listuje wszystkie dostępne gałęzie w danym repozytorium.</li>
+		 <li>-v - wyświetla dodatkowe informacje na temat ostatnich commitów wykonanych na poszczególnych gałęziach.</li>
+                 <li>Komenda ta jest bardzo przydatna w przypadku gdy osoba posiada wiele gałęzi nad którymi pracuje i chce odnaleźć tę która go aktualnie interesuje.</li>
+             </ul></br>
+
+
+    	<h2> git reset HEAD </h2>
+
+			<ul>
+				<li> cofa zmiany, wracając do plików wyjściowych </br> 
+		można regulować ile zrobionych przez nas commitów ma być cofniętych np <code> git reset HEAD^ </code>, cofnie nam o jeden, natomiast <code> git reset HEAD~2 </code> o dwa </li>
+				<li> gdy po modyfikowaniu, usuwaniu i dodawaniu wierszy w plikach, okazuje się, że zmiany nie są dobre i chcemy wrócić do wyjściowego pliku </li>
+				<li> <code> git reset HEAD index.html </code> </li>
+			</ul> </br>
+    
+
+		<h2>git remote add "remote_name" "git url"</h2>
+		<ul>
+		<p>Komenda służąca do dodania nowego zdalnego repozytorium, która przyjmuje dwa argumenty: "remote_name" czyli nazwę zdalnego repozytorium oraz url do niego "git url". (Przykład: git remote add "nazwa" "https://github.com/user/repo.git")</p>
+		</ul></br>
+    <h2>git commit -a -m ""</h2>
+		<ul>
+			<p>
+				Git commit - zatwierdza zmodyfikowane i usunięte pliki w danym repozytorium.</br>
+				<li>a (all - wszystkie) - parametr, dzięki któremu zatwierdzone zostaną wszystkie zmiany. </br>
+				<li>m (message - wiadomość) - parametr, którty oznacza dodanie do "commita" krótkiej wiadomości.</br>
+				<li>"" - miejsce na krótką wiadomość.</br>
+			</p>
+		</ul></br>
+
+
+
+
+    <h2>git commit -a -m ""</h2>
+		<p>
+			git commit - zatwierdza zmodyfikowane i usunięte pliki w danym repozytorium.</br>
+			-a (all - wszystkie) - parametr, dzięki któremu zatwierdzone zostaną wszystkie zmiany. </br>
+		   	-m (message - wiadomość) - parametr, którty oznacza dodanie do "commita" krótkiej wiadomości.</br>
+			"" - miejsce na krótką wiadomość.</br>
+		</p>
+
+    <h2>git checkout "branch"</h2>
+		<p>
+			Komenda git checkout pozwala zmienić gałąź na której pracujemy.</br>
+			Wywołanie komendy git checkout "branch" przełączy nas na gałąź o nazwie "branch" i zaktualizuje pliki w katalogu roboczym na te z wybranej gałęzi.</br>
+			Jeśli gałąź o nazwie "branch" nie istnieje, komenda nie zadziała. Aby stworzyć nową gałąź o tej nazwie należy poprzedzić nazwę gałęzi flagą -b (git checkout -b "branch").</br>
+		</p>
+
+		<dl>
+			<dt>git blame -C "filename"</dt>
+			<dd>
+				Komenda poprzedza każdą linię w pliku "filename" informacją o miejscu, autorze oraz czasie ostatniej modyfikacji danej linii.
+				Nie podaje jednak informacji na temat usuniętych oraz zastąpionych linii. 
+				Dzięki opcji <code>-C</code> wykrywa linie skopiowane z innych plików w repozytorium.
+				Przykładowy wynik komendy działania <code>git blame -C index.html</code>:
+<pre><code>a0ddc9f8 (Patryk Żywica 2020-11-10 19:37:44 +0100 1) &lt;html&gt;
+a0ddc9f8 (Patryk Żywica 2020-11-10 19:37:44 +0100 2) 	&lt;body&gt;pusta strona&lt;/body&gt;
+a0ddc9f8 (Patryk Żywica 2020-11-10 19:37:44 +0100 3) &lt;/html&gt;</code></pre>
+			</p>
+		</ul></br>
+		
+		
+	<h2>git branch "name"</h2>
+		<ul>
+			<p>Komenda git branch za argument przyjmuje ciąg znaków i tworzy nowy branch o podanej nazwie "name". Może być przydatna np. gdy podczas prac nad działającą aplikacją nie chcemy jej zepsuć, co umożliwia nam stworzenie nowego brancha dedykowanego wprowadzanym zmianom.</p>
+		</ul>
+		
+		
+	<h2>git config --global user.name ""</h2>
+		<ul>
+			<p>Komenda służy do wykonania pierwszych konfiguracji gita. Wystarczy dokonać tej konfiguracji tylko raz (informacje zostaną zachowane nawet po aktualizacji). Za pomocą parametrów, które są wykorzystywane powyżej następuje przypisanie wszystkich tworzonych zmian do konkretnego użytkownika. </br>
+			Paramter <code>--global</code> jest opcjonalny, jednak to on odpowiada za to, że dane pozostają nienaruszone po zmianach w aplikacji (np. po aktualizacji)</br>
+			Parametr <code>user.name</code> mówi o tym, co zamierzamy skonfigurować - w tym przypadku jest to nazwa użytkownika. </br>
+			<code>""</code> w cudysłowie należy podać wartość, która jest nazwą użytkownika, z którą chcemy być identyfikowani w dalszej części pracy nad projektem. </p>	
+		</ul>
+	
+	
+	<h2>git config --global color.ui true</h2>
+		<ul>
+			<p>
+				Jest głównym przełącznikiem pozwalającym konfigurować koloryzowanie danych wyjścia. Opcja:</br>
+				<li>auto - ustawiona jest domyślnie, koloruje jedynie dane wyjściowe trafiające prosto do terminalu</br>
+				<li>true - włącza pełne koloryzowanie danych wyjściowych trafiających zarówno do terminala jak i np pliku</br>
+				<li>false - wyłącza opcję koloryzowania danych wyjściowych</br>
+			</p>
+		</ul>
+
+<h2>git diff --staged</h2>
+  <ul>
+		<p>
+			<li> git diff - komenda pokazuje różnice między katalogiem w którym aktualnie się znajdujemy a listą plików które mają zostać scommitowane</br>
+
+      <li> opcja --staged działa tak samo jak opcja --cached, dzięki niej komenda git diff pokazuje różnice między plikami które mają zostać scommitowane a tymi, które znajdują się w Head</br>
+		</p>
+  </ul>
+		
+	<h2>git fetch "remote" "branch"</h2>
+		<ul>
+			<p>Polecenie pobiera dane, które znajdują się w zdalnym repozytorium do lokalnego repozytorium. 
+			   Ściąga wszystkie nowe zmiany pojawiające się w oryginalnym repozytorium od momentu jego sklonowania lub ostatniego użycia polecenia fetch. 
+			   Fetch pobiera dane, ale nie scala ani nie modyfikuje ich z lokalnymi plikami roboczymi. Wszelkie zmiany można scalać ręcznie w wybranym czasie.
+			</p>
+		</ul>
+	<h2> git config --global user.email "" </h2>
+		<ul>
+			<p>
+				Komenda służąca do konfiguracji użytkwnika która ustawia globalnie nasz adres e-mail.</br>
+				Jest to ważne ponieważ każdy utworzony przez nas commit będzie używać tej inforacji.</br>
+				Wystarczy jednorazowa konfiguracja gdyż opcja --global zapisuje nasz ustawienie dla każdego projektu.</br>
+				Jeśli jednak istnieje potrzeba ustawienia opcji dla danego projektu można użyć komendy bez --global</br>
+				wtedy ustawnie zostanie zapisane tylko dla konkretnego projektu.</br>
+			</p>
+		</ul>
+		
+	<h2>git bisect (start, bad, good, reset)</h2>
+		<ul>
+			<p>
+				W założeniach komenda służy do wyszukania w historii (za pomocą algorytmu wyszukiwania binarnego), który commit wprowadził błąd. 
+				Można ją jednak również wykorzystać do wyszukania commitu, który zmienił wybraną właściwość projektu. 
+				Do skutecznego działania wymaga zdefiniowania co najmniej jednej wersji projektu jako złej i jednej jako dobrej. 
+				Następnie algorytm wybiera wersję pomiędzy dwoma zdefiniowanymi wersjami i prosi użytkownika o ocenę, czy jest to wersja dobra, czy zła. 
+				Powtarza się to, dopóki nie zostanie odnaleziony commit zły następujący bezpośrednio po commitcie ocenionym jako dobry. </br>
+ 				Podstawowe polecenia bisect:</br>
+				<li>git bisect start - rozpoczyna sesję bisect</br>
+				<li>git bisect bad - określa aktualną/sprawdzaną wersję jako złą</br>
+				<li>git bisect good <wersja> - określa zadaną wersję jako dobrą, a później - bez podawania wersji - określa sprawdzaną wersję jako dobrą</br>
+				<li>git bisect reset <commit> - domyślnie, bez podania parametru <commit>, czyści sesję bisect, wracając do stanu wyjściowego; użycie parametru <commit> pozwala zamiast tego wrócić do wybranego commita.</br>
+			</p>
+		</ul>
+          
+<h2>git add .</h2>
+		<ul>
+			<p>
+				Dodaje do śledzenia bieżący katalog ze wszystkimi plikami i katalogami (rekurencyjnie cały katalog), które się w nim znajdują. Bierze również pod uwagę pliki których nazwa zaczyna się kropką.
+			</p>
+		</ul>
+
+</body>
+
+</html>
